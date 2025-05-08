@@ -27,10 +27,10 @@ jobs:
       - name: Upload to Xserver via SFTP
         uses: easingthemes/ssh-deploy@v4.1.8
         with:
-          ssh-private-key: ${{ secrets.SFTP_KEY }}
-          remote-user: ${{ secrets.SFTP_USERNAME }}
-          server-ip: ${{ secrets.SFTP_HOST }}
-          remote-port: ${{ secrets.SFTP_PORT }}
-          source: dist/my-portfolio/
-          target: /home/${{ secrets.SFTP_USERNAME }}/miro-base.com/public_html
-          exclude: "**/.git*,node_modules"
+          SSH_PRIVATE_KEY: ${{ secrets.SFTP_KEY }}
+          REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
+          REMOTE_HOST: ${{ secrets.SFTP_HOST }}
+          REMOTE_PORT: ${{ secrets.SFTP_PORT }}
+          SOURCE: dist/my-portfolio/
+          TARGET: /home/${{ secrets.SFTP_USERNAME }}/miro-base.com/public_html
+          EXCLUDE: ".git*,node_modules"

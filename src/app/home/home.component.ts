@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from "@angular/router";
 import { CommonModule } from '@angular/common';
+import { BlogService, BlogPost} from '../services/blog.service'
 
 @Component({
   selector: 'app-home',
@@ -11,35 +12,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  works = [
-    {
-      imageUrl: 'https://placehold.co/300x200',
-      title: 'ポートフォリオサイト',
-      tags: 'Angular / TailwindCSS / Firebase'
-    },
-    {
-      imageUrl: 'https://placehold.co/300x200',
-      title: 'ショッピングリストアプリ',
-      tags: 'Vue.js / Node.js / MongoDB'
-    },
-    {
-      imageUrl: 'https://placehold.co/300x200',
-      title: 'タスク管理ツール',
-      tags: 'React / Next.js'
-    }
-  ];
+export class HomeComponent implements OnInit{
+  recentPosts: BlogPost[] = [];
 
-  blogPosts = [
-    {
-      title: '技術ブログはじめました！',
-      excerpt: 'AngularとTailwindでポートフォリオを作ってみた記録です。',
-      date: '2024-04-01'
-    },
-    {
-      title: 'スローペースでエンジニア生活を楽しむ方法',
-      excerpt: '子育てや日常も大切にしながら、開発と向き合うスタイル。',
-      date: '2024-04-10'
-    }
-  ];
+  constructor(private blogService: BlogService) {}
+
+  ngOnInit(): void {
+    this.blogService.getPosts().subscribe((posts) => {
+      this.recentPosts = posts.slice(0, 3);
+    });
+  }
 }

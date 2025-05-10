@@ -7,6 +7,7 @@ export interface BlogPost {
   id: number;
   title: { rendered: string };
   excerpt: { rendered: string };
+  content: { rendered: string; };
   link: string;
 }
 
@@ -21,4 +22,9 @@ export class BlogService {
   getPosts(): Observable<BlogPost[]> {
     return this.http.get<BlogPost[]>(this.apiUrl);
   }
+  getPostBySlug(slug: string): Observable<BlogPost[]> {
+    return this.http.get<BlogPost[]>(`${this.apiUrl}?slug=${slug}`);
+  }
+
+
 }

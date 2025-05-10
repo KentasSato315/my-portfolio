@@ -1,0 +1,4 @@
+<div *ngIf="post">
+  <h1 class="text-3xl font-bold">{{ post.title.rendered }}</h1>
+  <div [innerHTML]="post.content.rendered" class="mt-4"></div>
+</div>

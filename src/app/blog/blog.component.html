@@ -1,0 +1,17 @@
+<section class="py-16 bg-white text-center">
+  <h2 class="text-3xl font-bold mb-8 text-gray-800">ブログ一覧</h2>
+
+  <div *ngIf="loading" class="text-gray-500">読み込み中...</div>
+  <div *ngIf="error" class="text-red-500">{{ error }}</div>
+
+  <div class="max-w-4xl mx-auto px-4 grid gap-8" *ngIf="!loading && posts.length">
+    <div
+      *ngFor="let post of posts"
+      class="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition text-left"
+    >
+      <h3 class="text-xl font-semibold text-gray-900 mb-2" [innerHTML]="post.title.rendered"></h3>
+      <p class="text-sm text-gray-600 mb-4" [innerHTML]="post.excerpt.rendered"></p>
+      <a [href]="post.link" target="_blank" class="text-sky-500 hover:underline">続きを読む →</a>
+    </div>
+  </div>
+</section>

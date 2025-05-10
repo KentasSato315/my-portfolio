@@ -17,6 +17,24 @@ export class HomeComponent implements OnInit{
 
   constructor(private blogService: BlogService) {}
 
+  works = [
+    {
+      imageUrl: 'https://placehold.co/300x200',
+      title: 'ポートフォリオサイト',
+      tags: 'Angular / TailwindCSS / Firebase'
+    },
+    {
+      imageUrl: 'https://placehold.co/300x200',
+      title: 'ショッピングリストアプリ',
+      tags: 'Vue.js / Node.js / MongoDB'
+    },
+    {
+      imageUrl: 'https://placehold.co/300x200',
+      title: 'タスク管理ツール',
+      tags: 'React / Next.js'
+    }
+  ];
+
   ngOnInit(): void {
     this.blogService.getPosts().subscribe((posts) => {
       this.recentPosts = posts.slice(0, 3);

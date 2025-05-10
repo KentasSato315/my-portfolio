@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { BlogService, BlogPost } from '../blog.service';
+import { BlogService, BlogPost } from '../../services/blog.service'
 import { RouterModule} from "@angular/router";
 import { Subscription } from 'rxjs';
 

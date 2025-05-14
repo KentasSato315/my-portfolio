@@ -35,8 +35,9 @@ jobs:
           REMOTE_HOST: ${{ secrets.SFTP_HOST }}
           REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
           REMOTE_PORT: ${{ secrets.SFTP_PORT }}
-          SOURCE: dist/my-portfolio/              # 📌 dist/my-portfolio の「中身」を転送
+          # 📌 dist/my-portfolio/browser の「中身」をアップロード
+          SOURCE: dist/my-portfolio/browser/
           TARGET: /home/${{ secrets.SFTP_USERNAME }}/miro-base.com/public_html
-          EXCLUDE: .git*,node_modules
-          ARGS: -avz --delete                     # 📌 --delete で不要な旧ファイル削除
+          EXCLUDE: .git*,node_modules,blog/
+          ARGS: -avz --delete
           SSH_CMD_ARGS: -o StrictHostKeyChecking=no

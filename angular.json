@@ -25,6 +25,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "miro-base.png",
+                "input": "src",
+                "output": "."
               }
             ],
             "styles": [

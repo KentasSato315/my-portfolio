@@ -28,11 +28,6 @@ export class HomeComponent implements OnInit{
       title: 'ショッピングリストアプリ',
       tags: 'Vue.js / Node.js / MongoDB'
     },
-    {
-      imageUrl: 'https://placehold.co/300x200',
-      title: 'タスク管理ツール',
-      tags: 'React / Next.js'
-    }
   ];
 
   ngOnInit(): void {

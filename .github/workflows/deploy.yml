@@ -1,10 +1,10 @@
 name: Deploy to Xserver
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - develop
-  workflow_dispatch:
 
 jobs:
   deploy:
@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          ref: develop  # 手動実行でも develop を指定してチェックアウト
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -24,18 +22,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Clean previous dist
+        run: rm -rf dist/
+
       - name: Build Angular app
         run: npm run build -- --configuration production
 
-      - name: Upload to Xserver via SSH
+      - name: Deploy to Xserver via SSH + rsync
         uses: easingthemes/ssh-deploy@v4.1.8
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SFTP_KEY }}
           REMOTE_HOST: ${{ secrets.SFTP_HOST }}
           REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
           REMOTE_PORT: ${{ secrets.SFTP_PORT }}
-          SOURCE: dist/my-portfolio/
+          SOURCE: dist/my-portfolio/              # 📌 dist/my-portfolio の「中身」を転送
           TARGET: /home/${{ secrets.SFTP_USERNAME }}/miro-base.com/public_html
           EXCLUDE: .git*,node_modules
-          ARGS: -rlgoDzvc -i
+          ARGS: -avz --delete                     # 📌 --delete で不要な旧ファイル削除
           SSH_CMD_ARGS: -o StrictHostKeyChecking=no

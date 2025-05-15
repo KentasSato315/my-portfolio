@@ -22,13 +22,13 @@ export class HomeComponent implements OnInit{
       imageUrl: 'assets/portfolio.png',
       title: 'ポートフォリオサイト',
       tags: 'Angular / TailwindCSS / GitHub Actions / Xserver',
-      link: '/works/portfolio'
+      link: '/'
     },
     {
       imageUrl: 'assets/sakan-maruyama.png',
       title: '丸山産業株式会社様 HP',
       tags: 'WordPress / デザイン提案',
-      link: '/works/maruyama'
+      link: 'https://sakan-maruyama.co.jp/'
     },
   ];
 

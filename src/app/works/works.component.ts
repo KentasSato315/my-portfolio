@@ -13,21 +13,17 @@ export class WorksComponent {
   works = [
     {
       id: '1',
-      imageUrl: 'https://placehold.co/300x200',
+      imageUrl: 'assets/portfolio.png',
       title: 'ポートフォリオサイト',
-      tags: 'Angular / TailwindCSS / Firebase'
+      tags: 'Angular / TailwindCSS / GitHub Actions / Xserver',
+      link: '/'
     },
     {
       id: '2',
-      imageUrl: 'https://placehold.co/300x200',
-      title: 'ショッピングリストアプリ',
-      tags: 'Vue.js / Node.js / MongoDB'
+      imageUrl: 'assets/sakan-maruyama.png',
+      title: '丸山産業株式会社様 HP',
+      tags: 'WordPress / デザイン提案',
+      link: 'https://sakan-maruyama.co.jp/'
     },
-    {
-      id: '3',
-      imageUrl: 'https://placehold.co/300x200',
-      title: 'タスク管理ツール',
-      tags: 'React / Next.js'
-    }
   ];
 }
